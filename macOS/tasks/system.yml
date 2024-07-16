@@ -1,0 +1,33 @@
+- name: Base macOS System Configuration
+  hosts: localhost
+  tasks:
+  - name: Reduce the size of the Dock to 30 points
+    shell: defaults write com.apple.dock tilesize -int 30
+
+  - name: Remove all items from the Dock
+    shell: dockutil --remove all
+
+  - name: Set the default Dock items
+    shell: "dockutil --add {{ item }}"
+    with_items:
+      - /Applications/Safari.app
+      - "\"/System/Applications/System\ Settings.app\""
+      - /Applications/iTerm.app
+      - /System/Applications/Utilities/Console.app
+      - "/Applications --section others"
+      - "~/Downloads --section others"
+
+  - name: Show ~/Library
+    shell: chflags nohidden ~/Library
+
+  - name: Show External Drives on the Desktop
+    shell: defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+
+  - name: Show Removable Media on the Desktop
+    shell: defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+  - name: Show the Status Bar in Finder
+    shell: defaults write com.apple.finder ShowStatusBar -bool true
+
+  - name: Restart Finder
+    shell: killall Finder

@@ -7,6 +7,8 @@
       - google-chrome
       - iterm2
       - zed
+      - 1password-cli
+      - 1password
     brew_packages:
       - jq
       - tmux
@@ -14,6 +16,10 @@
       - neovim
       - lazygit
       - gh
+      # TODO: automtically remove initial boot strap ansible installed via pip
+      - ansible
+      - dockutil
+      - m-cli
     install_homebrew_if_missing: true
     upgrade_homebrew_packages: true
 
