@@ -1,0 +1,34 @@
+- name: Update macOS Homebrew Packages
+  hosts: localhost
+  become: false
+  vars:
+    upgrade_homebrew_packages: true
+
+  pre_tasks:
+    - name: Ensuring Network Is Reachable
+      ansible.builtin.uri:
+        url: https://www.google.com
+      register: network_check
+      ignore_errors: true
+
+    - name: Ensuring Homebrew Is Installed
+      stat:
+        path: /opt/homebrew
+      register: homebrew_check
+
+  tasks:
+    - name: Updating Homebrew
+      homebrew:
+        update_homebrew: true
+      when:
+        - network_check.status == 200
+        - homebrew_check.stat.exists
+
+    - name: Upgrading Homebrew Packages
+      homebrew:
+        upgrade_all: "{{ upgrade_homebrew_packages }}"
+      register: result
+      until: result is successful
+      when:
+        - network_check.status == 200
+        - homebrew_check.stat.exists

@@ -24,7 +24,7 @@
       - dockutil
       - m-cli
     install_homebrew_if_missing: true
-    upgrade_homebrew_packages: true
+    upgrade_homebrew_packages: false
 
   pre_tasks:
     - name: Ensuring Homebrew Is Installed
@@ -73,3 +73,10 @@
       register: result
       until: result is successful
       when: homebrew_check.stat.exists
+
+    - name: Setup auto-update cron-job
+      ansible.builtin.cron:
+        name: "run system updates"
+        minute: "0"
+        hour: "6,22"
+        job: "/opt/homebrew/bin/ansible-playbook {{ lookup('env', 'PWD') }}/macOS/tasks/update.yml"
