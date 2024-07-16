@@ -2,7 +2,12 @@
   hosts: localhost
   tasks:
     - name: Reduce the size of the Dock to 30 points
-      shell: defaults write com.apple.dock tilesize -int 30
+      community.general.osx_defaults:
+        domain: com.apple.dock
+        key: tilesize
+        type: int
+        value: 30
+        state: present
 
     - name: Remove all items from the Dock
       shell: dockutil --remove all
@@ -10,30 +15,55 @@
     - name: Set the default Dock items
       shell: "dockutil --add {{ item }}"
       with_items:
-        - /Applications/Safari.app
-        - "\"/System/Applications/System\ Settings.app\""
-        - /Applications/iTerm.app
-        - /System/Applications/Utilities/Console.app
-        - "/Applications --section others"
-        - "~/Downloads --section others"
+        - /Applications/Safari.app --label Safari
+        - "\"/System/Applications/System\ Settings.app --label Settings\""
+        - /Applications/iTerm.app --label iTerm
+        - /System/Applications/Utilities/Console.app --label Console
+        - "/Applications --section others --sort name --label AppFolder"
+        - "~/Downloads --section others --label DownloadsFolder"
 
     - name: Show ~/Library
       shell: chflags nohidden ~/Library
 
     - name: Show External Drives on the Desktop
-      shell: defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: ShowExternalHardDrivesOnDesktop
+        type: bool
+        value: true
+        state: present
 
     - name: Show Removable Media on the Desktop
-      shell: defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: ShowRemovableMediaOnDesktop
+        type: bool
+        value: true
+        state: present
 
     - name: Show the Status Bar in Finder
-      shell: defaults write com.apple.finder ShowStatusBar -bool true
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: ShowStatusBar
+        type: bool
+        value: true
+        state: present
 
-    - name: Set Finder Defaults
-      shell: defaults write {{ item }}
-      with_items:
-        - 'com.apple.finder FXPreferredViewStyle -string "Nlsv"'
-        - 'com.apple.finder NewWindowTarget -string "PfHm"'
+    - name: Set Finder Default View
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: FXPreferredViewStyle
+        type: string
+        value: Nlsv
+        state: present
+
+    - name: Set Finder Default Target
+      community.general.osx_defaults:
+        domain: com.apple.finder
+        key: NewWindowTarget
+        type: string
+        value: PfHm
+        state: present
 
     - name: Restart Finder
       shell: killall Finder
