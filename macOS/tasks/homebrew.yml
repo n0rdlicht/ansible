@@ -3,12 +3,14 @@
   become: false
   vars:
     brew_cask_packages:
+      - arc
       - firefox
       - google-chrome
       - iterm2
       - zed
       - 1password-cli
       - 1password
+      - bitwarden
     brew_packages:
       - jq
       - tmux
