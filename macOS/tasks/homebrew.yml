@@ -11,6 +11,7 @@
       - 1password-cli
       - 1password
       - bitwarden
+      - raycast
     brew_packages:
       - jq
       - tmux
