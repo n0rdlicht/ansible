@@ -14,6 +14,7 @@
     brew_packages:
       - jq
       - tmux
+      - prettier
       - tree
       - neovim
       - lazygit
@@ -28,7 +29,7 @@
   pre_tasks:
     - name: Ensuring Homebrew Is Installed
       stat:
-        path: /opt/homebrew 
+        path: /opt/homebrew
       register: homebrew_check
 
     - name: Fail If Homebrew Is Not Installed and install_homebrew_if_missing Is False
