@@ -29,5 +29,11 @@
   - name: Show the Status Bar in Finder
     shell: defaults write com.apple.finder ShowStatusBar -bool true
 
+  - name: Set Finder Defaults
+    shell: defaults write {{ item }}
+    with_items:
+      - "com.apple.finder FXPreferredViewStyle -string \"Nlsv\""
+      - "com.apple.finder NewWindowTarget -string \"PfHm\""
+
   - name: Restart Finder
     shell: killall Finder
