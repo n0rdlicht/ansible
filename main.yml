@@ -10,6 +10,8 @@
       tags: ["always"]
 
   roles:
+    - role: elliotweiser.osx-command-line-tools
+      tags: ["always"]
     - role: geerlingguy.mac.homebrew
       tags: ["homebrew"]
     - role: geerlingguy.mac.mas
