@@ -33,7 +33,6 @@ homebrew_cask_apps:
   - zed
   - 1password-cli
   - 1password
-  - bitwarden
   - raycast
   - kaleidoscope
   - blender
@@ -49,3 +48,20 @@ homebrew_cask_apps:
   - choosy
   - daisydisk
   - vlc
+
+mas_uninstalled_apps: []
+mas_installed_apps:
+  - { id: 1423210932, name: "Flow" }
+  - { id: 403504866, name: "PCalc" }
+  - { id: 937984704, name: "Amphetamine" }
+  - { id: 1425368544, name: "Timery" }
+  - { id: 1592917505, name: "Noir" }
+  - { id: 6444915884, name: "Ice Cubes" }
+  - { id: 1352778147, name: "Bitwarden" }
+  - { id: 1498546559, name: "SwitchGlass" }
+  - { id: 1469995354, name: "Broadcasts" }
+  - { id: 1630573891, name: "Switcheroo" }
+  - { id: 1493996622, name: "Front and Center" }
+  - { id: 1056643111, name: "Clocker" }
+  - { id: 6454431289, name: "CrystalFetch" }
+mas_upgrade_all_apps: false
