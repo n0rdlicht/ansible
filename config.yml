@@ -65,3 +65,41 @@ mas_installed_apps:
   - { id: 1056643111, name: "Clocker" }
   - { id: 6454431289, name: "CrystalFetch" }
 mas_upgrade_all_apps: false
+
+configure_dock: true
+dockitems_remove:
+  - Launchpad
+  - Messages
+  - Maps
+  - Freeform
+  - FaceTime
+  - Photos
+  - Contacts
+  - Music
+  - Keynote
+  - Numbers
+  - Pages
+  - TV
+  - Notes
+  - Reminders
+  - Podcasts
+  - "App Store"
+dockitems_persist:
+  - name: Safari
+    path: "/Applications/Safari.app/"
+    pos: 1
+  - name: Safari Technology Preview
+    path: "/Applications/Safari Technology Preview.app/"
+    pos: 2
+  - name: Mail
+    path: "/Applications/Mail.app/"
+    pos: 3
+  - name: Calendar
+    path: "/Applications/Calendar.app/"
+    pos: 4
+  - name: Terminal
+    path: "/Applications/Utilities/Terminal.app/"
+    pos: 5
+  - name: System Settings
+    path: "/Applications/System Settings.app/"
+    pos: 6
