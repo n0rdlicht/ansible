@@ -1,2 +1,19 @@
-- import_playbook: ./tasks/homebrew.yml
-- import_playbook: ./tasks/system.yml
+---
+- name: Configure host
+  hosts: localhost
+
+  pre_tasks:
+    - name: Load playbook configuration
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags: ["always"]
+
+  roles:
+    - role: geerlingguy.mac.homebrew
+      tags: ["homebrew"]
+
+  # tasks:
+  #   - import_tasks: ./tasks/system.yml
+  #     when: configure_osx
+  #     tags: ["osx"]

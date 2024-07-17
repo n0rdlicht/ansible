@@ -1,0 +1,51 @@
+---
+configure_osx: true
+
+configure_homebrew: true
+homebrew_installed_packages:
+  - jq
+  - git
+  - gh
+  - gpg
+  - sqlite
+  - nmap
+  - wget
+  - tree
+  - neovim
+  - lazygit
+  - prettier
+  - tmux
+  - ansible
+  - dockutil
+
+homebrew_taps: []
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  # - arc
+  - docker
+  - firefox
+  - firefox@nightly
+  - google-chrome
+  - google-chrome@canary
+  - brave-browser
+  - iterm2
+  - zed
+  - 1password-cli
+  - 1password
+  - bitwarden
+  - raycast
+  - kaleidoscope
+  - blender
+  - qgis
+  - transmit
+  - jordanbaird-ice
+  - jupyterlab
+  - utm
+  - multipass
+  - visual-studio-code
+  - sublime-merge
+  - boop
+  - choosy
+  - daisydisk
+  - vlc
